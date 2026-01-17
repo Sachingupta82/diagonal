@@ -1,10 +1,15 @@
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 class GeminiService {
-  static const String apiKey = 'AIzaSyCvpv9P-ENn9CHI77TpNKdiKApNXdbJ8sc';
+  // The API key is injected at build time using --dart-define=GEMINI_API_KEY=your_key
+  // For production, consider using a backend proxy to keep the key entirely server-side.
+  static const String apiKey = String.fromEnvironment('GEMINI_API_KEY');
   static GenerativeModel? _model;
 
   static GenerativeModel get model {
+    if (apiKey.isEmpty) {
+      throw Exception('GEMINI_API_KEY not found. Please provide it via --dart-define.');
+    }
     _model ??= GenerativeModel(
       model: 'gemini-2.5-flash', // or gemini-2.0-flash-exp when available
       apiKey: apiKey,
