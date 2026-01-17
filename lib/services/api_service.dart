@@ -3,13 +3,15 @@ import 'package:diagonal/models/news_model.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'https://unsaluting-louvenia-nonsequaciously.ngrok-free.dev';
+  static const String baseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: 'https://api.diagonal.app',
+  );
   
   static Future<FeedResponse> fetchFeed({int page = 1}) async {
     try {
       final response = await http.get(
         Uri.parse('$baseUrl/feed/tiktok?page=$page'),
-        
       );
       
       if (response.statusCode == 200) {
