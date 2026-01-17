@@ -245,17 +245,15 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     
     if (text.contains('ai') || text.contains('artificial intelligence') || text.contains('machine learning')) {
       return 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&auto=format&fit=crop&q=80';
-    }else if (text.contains('government') || text.contains('politics')) {
+    } else if (text.contains('government') || text.contains('politics')) {
       return 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800';
-    } 
-    else if (text.contains('space') || text.contains('nasa') || text.contains('rocket')) {
+    } else if (text.contains('space') || text.contains('nasa') || text.contains('rocket')) {
       return 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=1200&auto=format&fit=crop&q=80';
     } else if (text.contains('climate') || text.contains('environment') || text.contains('green')) {
       return 'https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=1200&auto=format&fit=crop&q=80';
     } else if (text.contains('bjp') || text.contains('congress')) {
       return 'https://media.assettype.com/deccanherald/2024-04/0748b54e-60a9-4b16-8b47-7a37537a2864/congress_bjp_file_phoot_969654_1617384003.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true';
-    }
-    else if (text.contains('crypto') || text.contains('bitcoin') || text.contains('blockchain')) {
+    } else if (text.contains('crypto') || text.contains('bitcoin') || text.contains('blockchain')) {
       return 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200&auto=format&fit=crop&q=80';
     } else if (text.contains('election') || text.contains('politics') || text.contains('government')) {
       return 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=1200&auto=format&fit=crop&q=80';
@@ -273,8 +271,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       return 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1200&auto=format&fit=crop&q=80';
     } else if (text.contains('business') || text.contains('economy')) {
       return 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80';
-    }else
-    return 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200&auto=format&fit=crop&q=80';
+    } else {
+      return 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200&auto=format&fit=crop&q=80';
+    }
   }
 
   @override
@@ -296,19 +295,19 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
                   letterSpacing: -0.5,
-                  color: Color.fromARGB(255, 200, 198, 198)
+                  color: Color.fromARGB(255, 200, 198, 198),
                 ),
               ),
               centerTitle: false,
               titlePadding: const EdgeInsets.only(left: 20, bottom: 16),
               background: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      const Color(0xFF0A1E3D),
-                      const Color(0xFF1E3A5F),
+                      Color(0xFF0A1E3D),
+                      Color(0xFF1E3A5F),
                     ],
                   ),
                 ),
@@ -759,6 +758,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Search: ${widget.query}'),
+        backgroundColor: const Color(0xFF0A1E3D),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
