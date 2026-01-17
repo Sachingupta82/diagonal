@@ -1,10 +1,15 @@
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 class GeminiService {
-  static const String apiKey = 'AIzaSyCvpv9P-ENn9CHI77TpNKdiKApNXdbJ8sc';
+  // Use environment variables to avoid exposing the API key in client-side code.
+  // Build with: flutter run --define=GEMINI_API_KEY=your_key_here
+  static const String apiKey = String.fromEnvironment('GEMINI_API_KEY');
   static GenerativeModel? _model;
 
   static GenerativeModel get model {
+    if (apiKey.isEmpty) {
+      throw Exception('GEMINI_API_KEY environment variable is not set.');
+    }
     _model ??= GenerativeModel(
       model: 'gemini-2.5-flash', // or gemini-2.0-flash-exp when available
       apiKey: apiKey,
