@@ -208,7 +208,7 @@ class _ChainDetailScreenState extends State<ChainDetailScreen> with TickerProvid
             flexibleSpace: FlexibleSpaceBar(
               title: const Text(
                 'Story Timeline',
-                style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
               ),
               background: Container(
                 decoration: const BoxDecoration(
@@ -492,7 +492,6 @@ class _ChainDetailScreenState extends State<ChainDetailScreen> with TickerProvid
       ),
       body: Column(
         children: [
-          // Header Section
           Container(
             color: Colors.white,
             child: Column(
@@ -558,8 +557,6 @@ class _ChainDetailScreenState extends State<ChainDetailScreen> with TickerProvid
               ],
             ),
           ),
-
-          // Tab Content
           Expanded(
             child: TabBarView(
               controller: _articleTabController,
